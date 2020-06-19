@@ -1,0 +1,64 @@
+﻿@model ExpenseManager.Models.Income
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Income</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomeCategory.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomeCategory.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomeValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomeValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomeDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomeDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

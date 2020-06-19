@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ExpenseManager.Models.Expense>
+
+@{
+    ViewBag.Title = "Expenses";
+}
+
+<h2>Expenses</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @using (Html.BeginForm("Index", "Expenses", FormMethod.Post))
+        {
+            <td>
+                <input class="form-control" type="date" name="expenseStartDate" />
+                <input class="form-control" type="date" name="expenseEndDate" />
+            </td>
+            <td>
+                @Html.DropDownList("expenseCategory", new SelectList(ViewBag.CategoriesList), "--Category--", new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DropDownList("sortOrder", new SelectList(new List<string> { "ASC", "DESC" }), "--Order--", new { @class = "form-control" })
+            </td>
+            <td>
+                <input type="submit" value="Filter" class="btn btn-default" />
+            </td>
+            <td></td>
+        }
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpenseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpenseCategory.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpenseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpenseValue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpenseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpenseCategory.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpenseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpenseValue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ExpenseID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ExpenseID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ExpenseID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ExpenseManager.Models.Income>
+
+@{
+    ViewBag.Title = "Incomes";
+}
+
+<h2>Incomes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        @using (Html.BeginForm("Index", "Incomes", FormMethod.Post))
+        {
+            <td>
+                <input class="form-control" type="date" name="incomeStartDate"/>
+                <input class="form-control" type="date" name="incomeEndDate"/>
+            </td>
+            <td>
+                @Html.DropDownList("incomeCategory", new SelectList(ViewBag.CategoriesList), "--Category--", new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DropDownList("sortOrder", new SelectList(new List<string> { "ASC", "DESC" }), "--Order--", new { @class = "form-control" })
+            </td>
+            <td>
+                <input type="submit" value="Filter" class="btn btn-default" />
+            </td>
+            <td></td>
+        }
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IncomeDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncomeCategory.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncomeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncomeValue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncomeDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncomeCategory.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncomeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncomeValue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IncomeID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IncomeID })
+        </td>
+    </tr>
+}
+
+</table>

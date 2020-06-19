@@ -1,0 +1,58 @@
+﻿@model ExpenseManager.Models.Income
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Income</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomeCategory.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomeCategory.CategoryName)
+        </dd>
+        @*
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+            *@
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomeValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomeValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomeDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomeDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IncomeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
